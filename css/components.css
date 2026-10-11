@@ -1,0 +1,39 @@
+/* ==========================================================
+   css/components.css
+   Small shared pieces used by more than one section (tags, status dot)
+   ========================================================== */
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.tags span {
+  font-size: 13px;
+  padding: 7px 14px;
+  border: 1px solid currentColor;
+  border-radius: 99px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3dff9a;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #3dff9a99;
+  }
+  70%,100% {
+    box-shadow: 0 0 0 10px #3dff9a00;
+  }
+}
+
+@media (max-width: 800px) {
+  .tags span {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

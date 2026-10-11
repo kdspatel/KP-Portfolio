@@ -1,0 +1,708 @@
+/* ==========================================================
+   css/services.css
+   What I do: stacking service cards and their animated illustrations
+   ========================================================== */
+
+.svh {
+  padding: 160px 0 90px;
+}
+.svh h2 {
+  font-size: clamp(50px,8vw,130px);
+  letter-spacing: -.045em;
+  line-height: .9;
+}
+.pn {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-radius: 44px 44px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -20px 60px rgba(0,0,0,.25);
+}
+.pi {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 40px;
+  padding: 0 6vw;
+  transform-origin: 50% 100%;
+}
+.p1 {
+  background: #fff6e8;
+  color: #0b0b1a;
+}
+.p2 {
+  background: #0b0b1a;
+  color: #fff6e8;
+}
+.p3 {
+  background: #ffe14a;
+  color: #0b0b1a;
+}
+.p4 {
+  background: #1a24ff;
+  color: #fff6e8;
+}
+.big {
+  font-size: clamp(100px,20vw,330px);
+  line-height: .8;
+  font-weight: 800;
+  letter-spacing: -.06em;
+  opacity: .18;
+}
+.pn h3 {
+  font-size: clamp(46px,7vw,120px);
+  line-height: .9;
+  letter-spacing: -.05em;
+  margin-top: -.2em;
+}
+.pn p {
+  font-size: clamp(18px,1.7vw,26px);
+  line-height: 1.45;
+  max-width: 520px;
+}
+
+@media (max-width: 800px) {
+  .pi {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 20px;
+  }
+  .big {
+    font-size: 34vw;
+  }
+}
+.pn {
+  height: 100svh;
+}
+
+@media (max-width: 800px) {
+  .svh {
+    padding: 110px 0 50px;
+  }
+  .pn {
+    border-radius: 28px 28px 0 0;
+  }
+  .big {
+    font-size: 26vw;
+  }
+  .pn h3 {
+    font-size: clamp(36px,11vw,70px);
+  }
+  .pn p {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .big {
+    display: none;
+  }
+  .pi {
+    align-content: center;
+  }
+  .pn h3 {
+    font-size: clamp(30px,10vh,64px);
+  }
+}
+.pn {
+  --ac: #1a24ff;
+  --ac2: #ff5fa2;
+}
+.p2 {
+  --ac: #ff5fa2;
+  --ac2: #ffe14a;
+}
+.p3 {
+  --ac: #1a24ff;
+  --ac2: #0b0b1a;
+}
+.p4 {
+  --ac: #ffe14a;
+  --ac2: #ff5fa2;
+}
+.pn:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);
+  background-size: 64px 64px;
+  opacity: .06;
+  pointer-events: none;
+}
+.pn:after {
+  content: "";
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  right: -12vw;
+  bottom: -20vw;
+  border-radius: 50%;
+  background: var(--ac);
+  opacity: .2;
+  filter: blur(50px);
+  pointer-events: none;
+}
+.pi {
+  position: relative;
+  z-index: 1;
+}
+.pl {
+  min-width: 0;
+}
+.pr {
+  display: grid;
+  align-items: center;
+  min-width: 0;
+}
+.ptop {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  left: 6vw;
+  right: 6vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .7;
+}
+.big {
+  opacity: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px currentColor;
+  margin-bottom: .12em;
+}
+.pn h3 {
+  margin-top: 0;
+}
+.pn p {
+  margin-top: 22px;
+  max-width: 480px;
+}
+.viz {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.2;
+  max-height: 58vh;
+  justify-self: center;
+  color: inherit;
+}
+
+@media (min-width: 801px) {
+  .pi {
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+  }
+  .big {
+    font-size: clamp(70px,12vw,200px);
+  }
+}
+.win {
+  position: absolute;
+  inset: 6% 4% 14%;
+  border: 3px solid currentColor;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(127,127,127,.1);
+}
+.win .bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px;
+  border-bottom: 3px solid currentColor;
+}
+.win .bar i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .5;
+}
+.win .bar span {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: .7;
+}
+.win .bd {
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+.sk {
+  height: 14px;
+  border-radius: 8px;
+  background: currentColor;
+  opacity: .18;
+  animation: shim 2.4s ease-in-out infinite;
+}
+.sk.h {
+  height: 34px;
+  width: 62%;
+  background: var(--ac);
+  opacity: 1;
+}
+.sk.w1 {
+  width: 86%;
+}
+.sk.w2 {
+  width: 54%;
+  animation-delay: .3s;
+}
+.gr {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+.gr b {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: var(--ac2);
+  animation: pop 3s ease-in-out infinite;
+}
+.gr b:nth-child(2) {
+  animation-delay: .25s;
+  background: var(--ac);
+}
+.gr b:nth-child(3) {
+  animation-delay: .5s;
+}
+.cur {
+  position: absolute;
+  left: 12%;
+  top: 50%;
+  font-size: 36px;
+  line-height: 1;
+  animation: ptr 5s ease-in-out infinite;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,.35));
+}
+.fc {
+  position: absolute;
+  padding: 9px 16px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 5px 5px 0 rgba(0,0,0,.3);
+}
+.fc.a {
+  right: -2%;
+  top: 1%;
+  background: #0b0b1a;
+  color: #ffe14a;
+  animation: bob 4s ease-in-out infinite;
+}
+.fc.b {
+  left: -1%;
+  bottom: 3%;
+  background: #ff5fa2;
+  color: #0b0b1a;
+  animation: bob 5s ease-in-out -1s infinite;
+}
+@keyframes shim {
+  50% {
+    opacity: .4;
+  }
+}
+@keyframes pop {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(.82) rotate(-4deg);
+  }
+}
+@keyframes ptr {
+  0%,100% {
+    left: 12%;
+    top: 50%;
+  }
+  30% {
+    left: 64%;
+    top: 38%;
+  }
+  60% {
+    left: 40%;
+    top: 74%;
+  }
+}
+.v2 {
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  gap: 14px;
+}
+.cv {
+  width: 100%;
+  height: 100%;
+  border: 3px solid currentColor;
+  border-radius: 18px;
+  background: rgba(127,127,127,.08);
+}
+.crv {
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: draw 2.6s ease-in-out infinite;
+}
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 520;
+  }
+  85%,100% {
+    stroke-dashoffset: 0;
+  }
+}
+.tl {
+  position: relative;
+  border: 3px solid currentColor;
+  border-radius: 18px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  background: rgba(127,127,127,.08);
+  overflow: hidden;
+}
+.tk {
+  height: 18px;
+  border-radius: 9px;
+  background: rgba(127,127,127,.2);
+}
+.tk b {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  border-radius: 9px;
+  background: var(--ac);
+  transform-origin: left;
+  animation: grow 2.6s ease-in-out var(--d) infinite;
+}
+.tk:nth-child(2) b {
+  background: var(--ac2);
+}
+@keyframes grow {
+  0% {
+    transform: scaleX(.1);
+  }
+  60%,100% {
+    transform: scaleX(1);
+  }
+}
+.hd2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: currentColor;
+  left: 14px;
+  animation: phd 2.6s linear infinite;
+}
+@keyframes phd {
+  to {
+    left: calc(100% - 16px);
+  }
+}
+.v3 {
+  display: grid;
+  place-items: center;
+}
+.sc {
+  --s: 190px;
+  --z: calc(var(--s)/2);
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+.cube {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: rot 14s linear infinite;
+}
+.cube i {
+  position: absolute;
+  inset: 0;
+  border: 3px solid currentColor;
+  background: rgba(127,127,127,.1);
+}
+.cube i:nth-child(1) {
+  transform: translateZ(var(--z));
+}
+.cube i:nth-child(2) {
+  transform: rotateY(90deg) translateZ(var(--z));
+}
+.cube i:nth-child(3) {
+  transform: rotateY(180deg) translateZ(var(--z));
+}
+.cube i:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(var(--z));
+}
+.cube i:nth-child(5) {
+  transform: rotateX(90deg) translateZ(var(--z));
+}
+.cube i:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(var(--z));
+}
+.c-in {
+  inset: 25%;
+  --z: calc(var(--s)*.25);
+  animation-direction: reverse;
+}
+.c-in i {
+  background: var(--ac);
+  border-color: var(--ac2);
+  opacity: .9;
+}
+.orb3 {
+  position: absolute;
+  inset: -36%;
+  border: 2px dashed currentColor;
+  border-radius: 50%;
+  animation: orbit 9s linear infinite;
+}
+.orb3 b {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ac2);
+  top: -9px;
+  left: calc(50% - 9px);
+}
+@keyframes rot {
+  from {
+    transform: rotateX(-24deg) rotateY(0);
+  }
+  to {
+    transform: rotateX(-24deg) rotateY(360deg);
+  }
+}
+@keyframes orbit {
+  from {
+    transform: rotateX(72deg) rotateZ(0);
+  }
+  to {
+    transform: rotateX(72deg) rotateZ(360deg);
+  }
+}
+.bd4 {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(3,1fr);
+  gap: 14px;
+}
+.t {
+  border: 3px solid currentColor;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(127,127,127,.1);
+  padding: 12px;
+  animation: tile 5s ease-in-out infinite;
+}
+.t:nth-child(even) {
+  animation-delay: -2.5s;
+}
+@keyframes tile {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.t-btn {
+  background: var(--ac);
+  border-color: var(--ac);
+  color: #0b0b1a;
+  font-weight: 700;
+  font-size: clamp(14px,1.5vw,20px);
+}
+.t-tg i {
+  width: 84px;
+  height: 44px;
+  border-radius: 99px;
+  border: 3px solid currentColor;
+  position: relative;
+}
+.t-tg i:after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--ac2);
+  animation: knob 2.4s ease-in-out infinite;
+}
+@keyframes knob {
+  50% {
+    left: 42px;
+  }
+}
+.t-inp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.t-inp u {
+  width: 2px;
+  height: 22px;
+  background: currentColor;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.t-prg {
+  padding: 0 18px;
+}
+.t-prg b {
+  display: block;
+  width: 100%;
+  height: 16px;
+  border-radius: 9px;
+  background: rgba(127,127,127,.25);
+  position: relative;
+  overflow: hidden;
+}
+.t-prg b:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ac2);
+  transform-origin: left;
+  animation: fillb 3s ease-in-out infinite;
+}
+@keyframes fillb {
+  0% {
+    transform: scaleX(.05);
+  }
+  70%,100% {
+    transform: scaleX(1);
+  }
+}
+.t-sw {
+  grid-auto-flow: column;
+  gap: 10px;
+}
+.t-sw i {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--ac);
+}
+.t-sw i:nth-child(2) {
+  background: var(--ac2);
+}
+.t-sw i:nth-child(3) {
+  background: currentColor;
+}
+.t-sw i:nth-child(4) {
+  background: transparent;
+  border: 3px dashed currentColor;
+}
+.t-av {
+  grid-auto-flow: column;
+}
+.t-av i {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+  background: var(--ac);
+  margin-left: -12px;
+}
+.t-av i:nth-child(2) {
+  background: var(--ac2);
+}
+.t-av i:nth-child(3) {
+  background: rgba(127,127,127,.4);
+}
+
+@media (max-width: 800px) {
+  .ptop {
+    top: calc(16px + env(safe-area-inset-top,0px));
+    left: 24px;
+    right: 24px;
+    font-size: 11px;
+  }
+  .big {
+    font-size: 15vw;
+  }
+  .pn p {
+    margin-top: 12px;
+  }
+  .viz {
+    aspect-ratio: auto;
+    height: 190px;
+    max-height: none;
+    margin-top: 6px;
+  }
+  .fc {
+    display: none;
+  }
+  .win .bd {
+    padding: 12px;
+    gap: 8px;
+  }
+  .gr {
+    display: none;
+  }
+  .sc {
+    --s: 104px;
+  }
+  .bd4 {
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 8px;
+  }
+  .t {
+    padding: 6px;
+    border-width: 2px;
+    border-radius: 12px;
+  }
+  .t-tg i {
+    transform: scale(.7);
+  }
+  .t-sw i {
+    width: 22px;
+    height: 22px;
+  }
+  .t-av i {
+    width: 30px;
+    height: 30px;
+  }
+  .t-btn {
+    font-size: 12px;
+  }
+  .t-inp {
+    font-size: 11px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .viz {
+    max-height: 64vh;
+  }
+  .pn p {
+    margin-top: 10px;
+  }
+  .ptop {
+    display: none;
+  }
+  .sc {
+    --s: 130px;
+  }
+}

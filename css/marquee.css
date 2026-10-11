@@ -1,0 +1,48 @@
+/* ==========================================================
+   css/marquee.css
+   Marquee: the two crossing ribbons
+   ========================================================== */
+
+.mq {
+  position: relative;
+  height: clamp(300px,34vw,460px);
+  overflow: hidden;
+  margin: 40px 0;
+}
+.rb {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  top: 50%;
+  height: clamp(64px,9vw,130px);
+  margin-top: calc(clamp(64px,9vw,130px)/-2);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.ra {
+  background: #ffe14a;
+  color: #0b0b1a;
+  transform: rotate(-4deg);
+  z-index: 1;
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+.rbb {
+  background: #0b0b1a;
+  color: #ff5fa2;
+  transform: rotate(4deg);
+  z-index: 2;
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+.mq .tr {
+  display: flex;
+  width: max-content;
+  font-size: clamp(30px,5vw,78px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mq .tr span {
+  padding-right: .5em;
+}

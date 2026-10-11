@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>KP — Creative Developer</title>
+    <meta
+      name="description"
+      content="KP is a creative developer building immersive, motion-driven websites."
+    />
+    <meta name="theme-color" content="#0a0820" />
+    <meta property="og:title" content="KP — Creative Developer" />
+    <meta
+      property="og:description"
+      content="Immersive, motion-driven websites built with GSAP, WebGL and React."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/ui.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/marquee.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/statement.css" />
+    <link rel="stylesheet" href="css/work.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+
+    <style>
+      html {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* purana Edge */
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Edge, Safari */
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="gl"></canvas>
+    <div class="grain"></div>
+    <div id="cur"></div>
+    <div id="prog"></div>
+    <canvas id="tc"></canvas>
+    <div id="sec">Intro</div>
+    <!-- ===================== LOADER (code: css/loader.css, js/loader.js) ===================== -->
+    <div id="loader">
+      <div class="orb o1"></div>
+      <div class="orb o2"></div>
+      <div class="lt">
+        <span>KP — Creative Developer</span><span>Portfolio 2026</span>
+      </div>
+      <canvas id="pc"></canvas>
+      <div id="shock"></div>
+      <div id="flash"></div>
+      <div class="lb">
+        <div id="count">0<small>%</small></div>
+        <span>Loading experience<br />Please wait</span>
+      </div>
+    </div>
+    <div id="fx"></div>
+    <!-- ===================== NAVBAR (css/navbar.css, js/navbar.js) ===================== -->
+    <header class="tn" id="tn">
+      <div class="navp" role="navigation" aria-label="Main">
+        <a class="mk" href="#top" data-c aria-label="KP — back to top"></a>
+        <div class="nl" id="nl">
+          <i class="ind" id="ind"></i>
+          <a href="#about" data-c data-i="1">About</a
+          ><a href="#work" data-c data-i="3">Work</a
+          ><a href="#services" data-c data-i="4">Services</a
+          ><a href="#contact" data-c data-i="5">Contact</a>
+        </div>
+        <a class="ncta mag" href="#contact" data-c>Let's talk <span>↗</span></a>
+        <button
+          class="nb"
+          id="nb"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <span class="nbl">Menu</span><span class="bars"><i></i><i></i></span>
+        </button>
+      </div>
+    </header>
+    <!-- ===================== MOBILE MENU ===================== -->
+    <div class="menu" id="menu" aria-hidden="true">
+      <ul>
+        <li><a class="mi" href="#top">Home</a></li>
+        <li><a class="mi" href="#about">About</a></li>
+        <li><a class="mi" href="#work">Work</a></li>
+        <li><a class="mi" href="#services">Services</a></li>
+        <li><a class="mi" href="#contact">Contact</a></li>
+      </ul>
+      <div class="mf">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=kspatel6709@gmail.com"
+          target="_blank"
+          rel="noopener"
+          >kspatel6709@gmail.com</a
+        >
+        <div class="msoc">
+          <a
+            href="https://www.instagram.com/websbykajal?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener"
+            >Instagram</a
+          ><a
+            href="https://www.linkedin.com/in/kajal-patel-0a9b1b1b4/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          ><a href="https://github.com/kdspatel" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+    <main id="top">
+      <!-- ===================== HERO (css/hero.css, js/hero.js) ===================== -->
+      <header class="hero">
+        <div class="hg" aria-hidden="true">
+          <span style="left: 20%"></span><span style="left: 40%"></span
+          ><span style="left: 60%"></span><span style="left: 80%"></span>
+        </div>
+        <a class="stk s-hire mag" href="#contact" data-c data-d="1.2"
+          >Hire me ↗</a
+        >
+        <div class="stk s-star" aria-hidden="true" data-d="2.4">
+          <span>✳</span>
+        </div>
+        <div class="stk s-tag" aria-hidden="true" data-d="-1.6">
+          Design × Code
+        </div>
+        <div class="wrap">
+          <div class="chips">
+            <span class="chip"><i class="dot"></i>Available for projects</span
+            ><span class="chip" id="clk">India</span
+            ><span class="chip">Worldwide</span>
+          </div>
+          <h1 id="h1" aria-label="Websites that actually move you.">
+            <span class="ln" aria-hidden="true">Websites</span>
+            <span class="ln out lens" aria-hidden="true">that actually</span>
+            <span class="ln slot-ln" aria-hidden="true"
+              ><span class="slot"
+                ><span class="slw"
+                  ><span class="sl"><b>move</b></span
+                  ><span class="sl"><b>wow</b></span
+                  ><span class="sl"><b>thrill</b></span
+                  ><span class="sl"><b>surprise</b></span
+                  ><span class="sl"><b>move</b></span></span
+                ></span
+              >you.</span
+            >
+          </h1>
+          <div class="hero-foot">
+            <p>
+              KP is a creative developer building immersive, motion-driven
+              websites with GSAP, WebGL and React.
+            </p>
+            <div class="badge" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <defs>
+                  <path
+                    id="cp"
+                    d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
+                  />
+                </defs>
+                <text font-size="12.5" fill="currentColor" letter-spacing="3.4">
+                  <textPath href="#cp">
+                    SCROLL DOWN • SCROLL DOWN • SCROLL DOWN •
+                  </textPath>
+                </text></svg
+              ><b>↓</b>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== MARQUEE (css/marquee.css) ===================== -->
+      <div class="mq" aria-hidden="true">
+        <div class="rb ra">
+          <div class="tr" id="m1">
+            <span>Interaction ✳ Motion ✳ WebGL ✳ Design ✳ Code ✳</span
+            ><span>Interaction ✳ Motion ✳ WebGL ✳ Design ✳ Code ✳</span>
+          </div>
+        </div>
+        <div class="rb rbb">
+          <div class="tr" id="m2">
+            <span>Creative ✳ Developer ✳ Available ✳ Worldwide ✳</span
+            ><span>Creative ✳ Developer ✳ Available ✳ Worldwide ✳</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== ABOUT (css/about.css) ===================== -->
+      <section class="about" id="about">
+        <i
+          class="fl"
+          style="width: 220px; height: 220px; right: 8%; top: 12%"
+          data-s="1"
+        ></i
+        ><i
+          class="fl"
+          style="width: 90px; height: 90px; left: 46%; bottom: 10%"
+          data-s="2"
+        ></i
+        ><i
+          class="fl"
+          style="width: 340px; height: 340px; right: -6%; bottom: -8%"
+          data-s="3"
+        ></i>
+        <div class="wrap">
+          <p id="abt">
+            I design and code in the same sitting, so nothing gets lost between
+            an idea and the browser. Every scroll, hover and transition has a
+            reason, and every page still loads fast.
+          </p>
+          <div class="facts">
+            <div class="fact">
+              One person for design and code, so decisions stay fast.
+            </div>
+            <div class="fact">
+              Based in India, working with clients worldwide.
+            </div>
+            <div class="fact">
+              Built mobile-first, tested for speed before it ships.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== STATEMENT (css/statement.css) ===================== -->
+      <section
+        class="st"
+        aria-label="Don't just make it work. Make it feel. Make it move."
+      >
+        <div class="ph" aria-hidden="true">Don't just make it work.</div>
+        <div class="ph out" aria-hidden="true">Make it feel.</div>
+        <div class="ph" aria-hidden="true">Make it move.</div>
+      </section>
+
+      <!-- ===================== WORK (css/work.css) ===================== -->
+      <!-- <section class="work" id="work">
+        <div class="track" id="track">
+          <div class="wk-intro">
+            <h2>Selected<br />work</h2>
+            <p>
+              Four sample projects. Keep scrolling, the cards slide sideways.
+            </p>
+          </div>
+          <a
+            class="card"
+            href="#"
+            data-c
+            style="--a: #1a24ff; --b: #0b0b1a; --c: #ffe14a"
+            ><div class="art">
+              <i class="shape s1"></i><i class="shape s2"></i
+              ><i class="shape s3"></i>
+            </div>
+            <span class="n">01 / Data explorer</span>
+            <div>
+              <h3>Tidepool</h3>
+              <div class="tags">
+                <span>React</span><span>D3</span><span>GSAP</span>
+              </div>
+            </div></a
+          ><a
+            class="card"
+            href="#"
+            data-c
+            style="--a: #ff5fa2; --b: #1a24ff; --c: #fff6e8"
+            ><div class="art">
+              <i class="shape s1"></i><i class="shape s2"></i
+              ><i class="shape s3"></i>
+            </div>
+            <span class="n">02 / Studio website</span>
+            <div>
+              <h3>Loom Studio</h3>
+              <div class="tags">
+                <span>Next.js</span><span>Motion</span><span>Type</span>
+              </div>
+            </div></a
+          ><a
+            class="card"
+            href="#"
+            data-c
+            style="--a: #0b0b1a; --b: #ff5fa2; --c: #ffe14a"
+            ><div class="art">
+              <i class="shape s1"></i><i class="shape s2"></i
+              ><i class="shape s3"></i>
+            </div>
+            <span class="n">03 / Online shop</span>
+            <div>
+              <h3>Kiln</h3>
+              <div class="tags">
+                <span>Shopify</span><span>Three.js</span><span>UX</span>
+              </div>
+            </div></a
+          ><a
+            class="card"
+            href="#"
+            data-c
+            style="--a: #1a24ff; --b: #ff5fa2; --c: #fff6e8"
+            ><div class="art">
+              <i class="shape s1"></i><i class="shape s2"></i
+              ><i class="shape s3"></i>
+            </div>
+            <span class="n">04 / Product tour</span>
+            <div>
+              <h3>Parallel</h3>
+              <div class="tags">
+                <span>WebGL</span><span>Shaders</span><span>GSAP</span>
+              </div>
+            </div></a
+          >
+          <a class="card cta" href="#contact" data-c
+            ><h3>Your project next?</h3>
+            <p>
+              Tell me what you're building and I'll tell you how it can move.
+            </p></a
+          >
+        </div>
+        <div class="wp"><i></i></div>
+      </section> -->
+
+      <section class="work" id="work">
+        <div class="track" id="track">
+          <div class="wk-intro">
+            <h2>Selected<br />work</h2>
+            <p>Eight projects. Keep scrolling, the cards slide sideways.</p>
+          </div>
+
+          <!-- 1: Cafe -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/1.png"
+                alt="Project 1 - Cafe website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 1</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 2: SmileCare dental -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/2.png"
+                alt="Project 2 - Dental clinic website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 2</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 3: Aura gym -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/3.png"
+                alt="Project 3 - Gym website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 3</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 4: Elara beauty studio -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/4.png"
+                alt="Project 4 - Beauty studio website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 4</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 5: Elysian restaurant -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/5.png"
+                alt="Project 5 - Restaurant website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 5</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 6: Aurix car -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/6.png"
+                alt="Project 6 - Car brand website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 6</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 7: KJ Beauty store -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/7.png"
+                alt="Project 7 - Beauty store website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 7</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <!-- 8: Merch store -->
+          <div class="proj">
+            <div class="card pj" data-c>
+              <img
+                src="assets/8.png"
+                alt="Project 8 - Merch store website"
+                loading="lazy"
+              />
+            </div>
+            <div class="info">
+              <span class="n">Project 8</span>
+              <a class="btn" href="#">View project <b>→</b></a>
+            </div>
+          </div>
+
+          <a class="card cta" href="#contact" data-c>
+            <h3>Your project next?</h3>
+            <p>
+              Tell me what you're building and I'll tell you how it can move.
+            </p>
+          </a>
+        </div>
+        <div class="wp"><i></i></div>
+      </section>
+
+      <!-- ===================== SERVICES / WHAT I DO (css/services.css) ===================== -->
+      <section class="stack" id="services">
+        <div class="wrap svh"><h2>What I do</h2></div>
+        <div class="pn p1">
+          <div class="ptop">
+            <span>Service 01 / 04</span><span>KP — What I do</span>
+          </div>
+          <div class="pi">
+            <div class="pl">
+              <div class="big rv">01</div>
+              <h3 class="rv">Creative development</h3>
+              <p class="rv">
+                Fast, responsive, accessible websites with a strong visual
+                system and interactions that earn attention.
+              </p>
+              <div class="tags rv">
+                <span>Next.js</span><span>React</span><span>Accessibility</span>
+              </div>
+            </div>
+            <div class="pr">
+              <div class="viz v1 rv">
+                <div class="win">
+                  <div class="bar">
+                    <i></i><i></i><i></i><span>kp.dev/home</span>
+                  </div>
+                  <div class="bd">
+                    <div class="sk h"></div>
+                    <div class="sk w1"></div>
+                    <div class="sk w2"></div>
+                    <div class="gr"><b></b><b></b><b></b></div>
+                  </div>
+                </div>
+                <span class="cur">↖</span><span class="fc a">React ✓</span
+                ><span class="fc b">100 Lighthouse</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pn p2">
+          <div class="ptop">
+            <span>Service 02 / 04</span><span>KP — What I do</span>
+          </div>
+          <div class="pi">
+            <div class="pl">
+              <div class="big rv">02</div>
+              <h3 class="rv">Motion design</h3>
+              <p class="rv">
+                Scroll choreography, page transitions and micro-interactions
+                built with GSAP and tuned to feel physical.
+              </p>
+              <div class="tags rv">
+                <span>GSAP</span><span>ScrollTrigger</span><span>Lenis</span>
+              </div>
+            </div>
+            <div class="pr">
+              <div class="viz v2 rv">
+                <svg class="cv" viewBox="0 0 400 240">
+                  <g stroke="currentColor" opacity=".18" fill="none">
+                    <path
+                      d="M0 60H400M0 120H400M0 180H400M100 0V240M200 0V240M300 0V240"
+                    />
+                  </g>
+                  <path
+                    class="crv"
+                    d="M24 210C150 210 150 36 376 36"
+                    fill="none"
+                    stroke="var(--ac)"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                  />
+                  <g fill="currentColor">
+                    <rect
+                      x="16"
+                      y="202"
+                      width="16"
+                      height="16"
+                      transform="rotate(45 24 210)"
+                    />
+                    <rect
+                      x="368"
+                      y="28"
+                      width="16"
+                      height="16"
+                      transform="rotate(45 376 36)"
+                    />
+                  </g>
+                  <circle r="14" fill="var(--ac2)">
+                    <animateMotion
+                      dur="2.6s"
+                      repeatCount="indefinite"
+                      path="M24 210C150 210 150 36 376 36"
+                      keyTimes="0;.85;1"
+                      keyPoints="0;1;1"
+                      calcMode="linear"
+                    />
+                  </circle>
+                </svg>
+                <div class="tl">
+                  <div class="tk"><b style="--d: 0s; --w: 70%"></b></div>
+                  <div class="tk"><b style="--d: 0.4s; --w: 50%"></b></div>
+                  <div class="tk"><b style="--d: 0.8s; --w: 84%"></b></div>
+                  <i class="hd2"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pn p3">
+          <div class="ptop">
+            <span>Service 03 / 04</span><span>KP — What I do</span>
+          </div>
+          <div class="pi">
+            <div class="pl">
+              <div class="big rv">03</div>
+              <h3 class="rv">WebGL and 3D</h3>
+              <p class="rv">
+                Three.js scenes, shaders and particle systems that stay smooth
+                on a mid-range phone.
+              </p>
+              <div class="tags rv">
+                <span>Three.js</span><span>GLSL</span><span>Shaders</span>
+              </div>
+            </div>
+            <div class="pr">
+              <div class="viz v3 rv">
+                <div class="sc">
+                  <div class="cube">
+                    <i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div class="cube c-in">
+                    <i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div class="orb3"><b></b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pn p4">
+          <div class="ptop">
+            <span>Service 04 / 04</span><span>KP — What I do</span>
+          </div>
+          <div class="pi">
+            <div class="pl">
+              <div class="big rv">04</div>
+              <h3 class="rv">Frontend systems</h3>
+              <p class="rv">
+                Component libraries and design systems that scale with your
+                product and your team.
+              </p>
+              <div class="tags rv">
+                <span>TypeScript</span><span>Tailwind</span
+                ><span>Design systems</span>
+              </div>
+            </div>
+            <div class="pr">
+              <div class="viz v4 rv">
+                <div class="bd4">
+                  <div class="t t-btn">Button ↗</div>
+                  <div class="t t-tg"><i></i></div>
+                  <div class="t t-inp"><span>Search</span><u></u></div>
+                  <div class="t t-prg"><b></b></div>
+                  <div class="t t-sw"><i></i><i></i><i></i><i></i></div>
+                  <div class="t t-av"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT (css/contact.css, js/contact.js) ===================== -->
+      <section class="ct" id="contact">
+        <div class="wrap">
+          <h2>
+            <span class="ln"><span class="c2">Let's make</span></span
+            ><span class="ln out"><span class="c2">it move.</span></span>
+          </h2>
+          <div class="row cgrid">
+            <div class="cinfo">
+              <p class="clead">
+                Have an idea, a product or a website that needs more than a
+                template? Tell me what you're building and I'll reply within 24
+                hours.
+              </p>
+              <div class="cmeta">
+                <div>
+                  <span>Email</span
+                  ><a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=kspatel6709@gmail.com"
+                    target="_blank"
+                    rel="noopener"
+                    data-c
+                    >kspatel6709@gmail.com</a
+                  >
+                </div>
+                <div>
+                  <span>Based in</span><b>India · <i id="clk2">--:--</i></b>
+                </div>
+                <div>
+                  <span>Status</span><b><i class="dot"></i>Open for projects</b>
+                </div>
+                <div>
+                  <span>Follow</span>
+                  <div class="soc">
+                    <a
+                      href="https://www.instagram.com/websbykajal?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
+                      target="_blank"
+                      rel="noopener"
+                      data-c
+                      >Instagram</a
+                    ><a
+                      href="https://www.linkedin.com/in/kajal-patel-579722267/"
+                      target="_blank"
+                      rel="noopener"
+                      data-c
+                      >LinkedIn</a
+                    ><a
+                      href="https://github.com/kdspatel"
+                      target="_blank"
+                      rel="noopener"
+                      data-c
+                      >GitHub</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form class="cform" id="cform" novalidate>
+              <div class="cf-t">Start a project</div>
+              <label class="fld"
+                ><span>Your name</span
+                ><input
+                  name="name"
+                  required
+                  autocomplete="name"
+                  placeholder="Jane Doe"
+              /></label>
+              <label class="fld"
+                ><span>Your email</span
+                ><input
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="jane@company.com"
+              /></label>
+              <div class="fld">
+                <span>I need help with</span>
+                <div class="chs">
+                  <button type="button" class="pill">Website</button
+                  ><button type="button" class="pill">Motion</button
+                  ><button type="button" class="pill">WebGL / 3D</button
+                  ><button type="button" class="pill">Design system</button
+                  ><button type="button" class="pill">Something else</button>
+                </div>
+              </div>
+              <div class="fld">
+                <span>Budget</span>
+                <div class="chs one">
+                  <button type="button" class="pill">Under $1k</button
+                  ><button type="button" class="pill">$1k – 3k</button
+                  ><button type="button" class="pill">$3k – 10k</button
+                  ><button type="button" class="pill">$10k+</button>
+                </div>
+              </div>
+              <label class="fld"
+                ><span>Tell me about it</span
+                ><textarea
+                  name="msg"
+                  rows="4"
+                  required
+                  placeholder="What are you building, and by when?"
+                ></textarea>
+              </label>
+              <button class="send mag" type="submit" data-c>
+                Send message <span>↗</span>
+              </button>
+              <p class="cnote" id="cnote" aria-live="polite"></p>
+            </form>
+          </div>
+          <footer>
+            <span>© 2026 KP</span><span>Designed and coded by hand</span
+            ><a href="#top" data-c>Back to top ↑</a>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <!-- Scripts: classic files that share one scope. Keep this order. -->
+    <script src="js/core.js"></script>
+    <script src="js/webgl.js"></script>
+    <script src="js/pointer.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/render-loop.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/boot.js"></script>
+  </body>
+</html>

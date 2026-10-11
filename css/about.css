@@ -1,0 +1,84 @@
+/* ==========================================================
+   css/about.css
+   About: pinned paragraph, facts, floating rings
+   ========================================================== */
+
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.about p {
+  font-size: clamp(30px,4.8vw,76px);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  font-weight: 600;
+  max-width: 1200px;
+}
+.wd {
+  opacity: .14;
+  display: inline-block;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+.fact {
+  border-top: 2px solid var(--ink);
+  padding-top: 14px;
+  font-size: 18px;
+  line-height: 1.4;
+  max-width: 340px;
+}
+.fl {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  opacity: .35;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .facts {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+.about {
+  min-height: 100svh;
+}
+
+@media (max-width: 1100px) {
+  .facts {
+    gap: 20px;
+  }
+  .fact {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .about p {
+    font-size: clamp(22px,6vw,40px);
+  }
+  .fact {
+    font-size: 15px;
+  }
+  .facts {
+    margin-top: 30px;
+    gap: 14px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .about p {
+    font-size: clamp(20px,3.4vw,40px);
+  }
+  .facts {
+    margin-top: 20px;
+  }
+}
