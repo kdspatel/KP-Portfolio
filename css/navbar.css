@@ -140,9 +140,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  justify-content: safe center;   /* if content is taller than the screen it scrolls instead of getting cut */
   gap: 34px;
-  padding: 100px 28px calc(34px + env(safe-area-inset-bottom,0px));
+  padding: calc(96px + env(safe-area-inset-top,0px)) 28px calc(34px + env(safe-area-inset-bottom,0px));
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
@@ -160,10 +159,12 @@
 }
 .mi {
   display: block;
-  font-size: clamp(40px,min(14vw,11vh),110px);   /* shrinks on short (landscape) screens */
+  color: #fff6e8;
+  font-size: clamp(40px,14vw,110px);
   font-weight: 700;
   letter-spacing: -.04em;
-  line-height: 1.05;
+  line-height: 1.1;
+  padding: 2px 0;
   transform: translateY(110%);
 }
 .mf {
@@ -171,6 +172,7 @@
   gap: 14px;
   font-weight: 600;
   font-size: 17px;
+  color: #fff6e8;
   overflow-wrap: anywhere;
 }
 .msoc {
@@ -178,6 +180,23 @@
   gap: 20px;
   flex-wrap: wrap;
   opacity: .75;
+}
+
+/* safety net: whenever the menu is marked open, it is visible and tappable,
+   even if the opening animation did not run (inline styles from the script still win) */
+.menu[aria-hidden="false"] {
+  clip-path: circle(150% at 100% 0);
+  pointer-events: auto;
+}
+.menu[aria-hidden="false"] .mi {
+  transform: none;
+}
+body:has(.nb[aria-expanded="true"]) .menu {
+  clip-path: circle(150% at 100% 0);
+  pointer-events: auto;
+}
+body:has(.nb[aria-expanded="true"]) .menu .mi {
+  transform: none;
 }
 
 /* hover effects only where there is a real mouse (no sticky hover on touch) */
@@ -205,31 +224,45 @@
   }
 }
 
+/* phones and small tablets: slim bar, logo on the left, Menu button on the right */
 @media (max-width: 800px) {
   .tn {
-    padding: calc(12px + env(safe-area-inset-top,0px)) 12px 0;
+    padding: calc(10px + env(safe-area-inset-top,0px)) 12px 0;
   }
   .navp {
     width: 100%;
+    max-width: 640px;
     justify-content: space-between;
-    padding: 6px 6px 6px 16px;
+    gap: 0;
+    padding: 5px 5px 5px 14px;
+  }
+  .tn.s .navp {
+    padding: 4px 4px 4px 12px;
   }
   .nl, .ncta {
     display: none;
   }
   .nb {
     display: inline-flex;
+    flex: none;
+    min-height: 42px;
+    padding: 10px 16px;
   }
   .mk {
     margin-right: 0;
+    width: 32px;
+    height: 34px;
   }
 }
 
 /* phones held sideways */
 @media (max-width: 800px) and (max-height: 500px) {
   .menu {
-    padding-top: 80px;
-    gap: 20px;
+    padding-top: calc(76px + env(safe-area-inset-top,0px));
+    gap: 18px;
+  }
+  .mi {
+    font-size: clamp(30px,10vh,60px);
   }
 }
 
