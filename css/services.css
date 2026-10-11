@@ -178,6 +178,7 @@
 }
 .pn h3 {
   margin-top: 0;
+  overflow-wrap: break-word;   /* safety: a long word wraps instead of running into the illustration */
 }
 .pn p {
   margin-top: 22px;
@@ -199,6 +200,13 @@
   }
   .big {
     font-size: clamp(70px,12vw,200px);
+  }
+}
+
+/* small laptops and tablets: two narrow columns, so the heading must be a bit smaller */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .pn h3 {
+    font-size: clamp(40px,6vw,66px);
   }
 }
 .win {
@@ -632,6 +640,13 @@
 }
 
 @media (max-width: 800px) {
+  /* keep the content clear of the top label and the phone's home bar */
+  .pi {
+    padding: calc(44px + env(safe-area-inset-top,0px)) 6vw env(safe-area-inset-bottom,0px);
+  }
+  .pn:after {
+    filter: blur(30px);     /* lighter blur, big blurs are slow on phones */
+  }
   .ptop {
     top: calc(16px + env(safe-area-inset-top,0px));
     left: 24px;
@@ -646,7 +661,7 @@
   }
   .viz {
     aspect-ratio: auto;
-    height: 190px;
+    height: clamp(130px,26svh,220px);   /* grows on tall phones, shrinks on short ones */
     max-height: none;
     margin-top: 6px;
   }
@@ -692,9 +707,19 @@
   }
 }
 
+/* phones held sideways: text on the left, illustration on the right (like desktop) */
 @media (max-height: 560px) and (orientation: landscape) {
+  .pi {
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+    align-content: center;
+    padding: 0 6vw;
+  }
   .viz {
+    aspect-ratio: 1.2;
+    height: auto;
     max-height: 64vh;
+    margin-top: 0;
   }
   .pn p {
     margin-top: 10px;
@@ -704,5 +729,8 @@
   }
   .sc {
     --s: 130px;
+  }
+  .gr, .fc {
+    display: none;
   }
 }

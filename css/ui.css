@@ -26,7 +26,7 @@
 }
 #prog {
   position: fixed;
-  top: 0;
+  top: env(safe-area-inset-top,0px);
   left: 0;
   height: 4px;
   width: 100%;
@@ -38,8 +38,8 @@
 }
 #sec {
   position: fixed;
-  left: 30px;
-  bottom: 26px;
+  left: calc(30px + env(safe-area-inset-left,0px));
+  bottom: calc(26px + env(safe-area-inset-bottom,0px));
   z-index: 100;
   mix-blend-mode: difference;
   color: #fff;
@@ -48,8 +48,9 @@
   letter-spacing: .04em;
 }
 
-@media (hover: none) {
-  #cur {
+/* touch screens (no mouse): no custom cursor, no mouse trail */
+@media (hover: none), (pointer: coarse) {
+  #cur, #tc {
     display: none;
   }
 }
@@ -58,7 +59,14 @@
   #sec {
     display: none;
   }
+  #prog {
+    height: 3px;
+  }
 }
-#sec {
-  bottom: calc(26px + env(safe-area-inset-bottom,0px));
+
+/* phones held sideways: the section label would sit on top of the content */
+@media (max-height: 560px) {
+  #sec {
+    display: none;
+  }
 }

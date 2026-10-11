@@ -4,6 +4,7 @@
    ========================================================== */
 
 .hero {
+  min-height: 100vh;      /* fallback for older browsers */
   min-height: 100svh;
   padding: 130px 0 40px;
   display: flex;
@@ -209,6 +210,13 @@ h1 {
   }
 }
 
+/* tablets held upright (iPad etc.): the screen is tall, so let the headline grow */
+@media (min-width: 801px) and (max-width: 1100px) and (orientation: portrait) {
+  h1 {
+    font-size: clamp(54px,12vw,200px);
+  }
+}
+
 @media (max-width: 800px) {
   h1 {
     font-size: clamp(38px,12vw,120px);
@@ -230,6 +238,14 @@ h1 {
   }
 }
 
+/* big phones and small tablets: text on the left, scroll badge on the right (like desktop) */
+@media (min-width: 481px) and (max-width: 800px) {
+  .hero-foot {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
 @media (max-width: 380px) {
   h1 {
     font-size: 11.4vw;
@@ -240,13 +256,14 @@ h1 {
   }
 }
 
+/* phones held sideways: very short screens */
 @media (max-height: 560px) and (orientation: landscape) {
   .hero {
     padding-top: 84px;
     padding-bottom: 24px;
   }
   h1 {
-    font-size: min(13vw,24vh);
+    font-size: min(11vw,18vh);
   }
   .chips {
     margin-bottom: 2vh;
@@ -255,7 +272,7 @@ h1 {
     margin-top: 14px;
     font-size: 14px;
   }
-  .badge, .s-star, .s-tag {
+  .badge, .s-star, .s-tag, .s-hire {
     display: none;
   }
 }

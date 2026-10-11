@@ -46,3 +46,19 @@
 .mq .tr span {
   padding-right: .5em;
 }
+
+/* phones: the two ribbons only need a short band, not 300px of empty space */
+@media (max-width: 800px) {
+  .mq {
+    height: clamp(200px,52vw,300px);
+    margin: 24px 0;
+  }
+}
+
+/* phones held sideways: keep the band short so it never fills the whole screen */
+@media (max-height: 560px) {
+  .mq {
+    height: clamp(180px,40vh,260px);
+    margin: 16px 0;
+  }
+}

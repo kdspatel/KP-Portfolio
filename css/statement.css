@@ -19,14 +19,23 @@
   text-align: center;
   text-transform: uppercase;
   padding: 0 4vw;
+  overflow-wrap: break-word;   /* safety: a long word wraps instead of getting cut off */
   will-change: transform,filter;
 }
 .st {
   height: 100svh;
 }
 
+/* phones: the screen is tall and narrow, so words can be bigger and stack on more lines */
 @media (max-width: 800px) {
   .ph {
-    font-size: clamp(44px,15.5vw,120px);
+    font-size: clamp(44px,18vw,120px);
+  }
+}
+
+/* phones held sideways: size by height so the phrase never gets taller than the screen */
+@media (max-height: 560px) and (orientation: landscape) {
+  .ph {
+    font-size: clamp(40px,min(14vw,22vh),200px);
   }
 }

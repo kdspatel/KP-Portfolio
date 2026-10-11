@@ -9,6 +9,12 @@
   --mute: #9a95c9;
   --bg: #1a24ff;
   --ink: #fff6e8;
+  --vh: 100vh;              /* use var(--vh) instead of 100vh for full-screen sections */
+}
+@supports (height: 100svh) {
+  :root {
+    --vh: 100svh;           /* phone-safe height: ignores the address bar jumping */
+  }
 }
 * {
   margin: 0;
@@ -17,6 +23,8 @@
 }
 html {
   background: var(--bg);
+  -webkit-text-size-adjust: 100%;   /* stops phones from resizing text on rotate */
+  text-size-adjust: 100%;
 }
 html.lenis, html.lenis body {
   height: auto;
@@ -31,6 +39,10 @@ body {
   font-variation-settings: "wdth" 90;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  max-width: 100%;
 }
 a {
   color: inherit;
@@ -65,7 +77,8 @@ main {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .wrap {
-  width: min(1360px,calc(100% - 48px));
+  /* side gutter 24px each side, plus phone notch space in landscape */
+  width: min(1360px,calc(100% - 48px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));
   margin: auto;
 }
 .ln {
@@ -110,6 +123,26 @@ html, body {
 @media (min-width: 1800px) {
   .wrap {
     width: min(1560px,calc(100% - 96px));
+  }
+}
+
+/* tablets and phones */
+@media (max-width: 800px) {
+  .wrap {
+    width: calc(100% - 40px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));
+  }
+  .out {
+    -webkit-text-stroke-width: 1.5px;   /* thinner outline text on small screens */
+  }
+  .grain {
+    opacity: .05;
+  }
+}
+
+/* small phones */
+@media (max-width: 380px) {
+  .wrap {
+    width: calc(100% - 32px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));
   }
 }
 

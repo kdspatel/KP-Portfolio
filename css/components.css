@@ -21,6 +21,7 @@
   border-radius: 50%;
   background: #3dff9a;
   animation: pulse 1.8s infinite;
+  flex: none; 
 }
 @keyframes pulse {
   0% {
