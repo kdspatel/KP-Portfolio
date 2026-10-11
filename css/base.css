@@ -67,6 +67,9 @@ a {
 main {
   position: relative;
   z-index: 1;
+  /* scroll effects (marquee skew, hero tear, card skew) push a few pixels past the screen edge.
+     clip them here so the page never becomes wider than the phone; "clip" keeps sticky/pinned sections working */
+  overflow-x: clip;
 }
 .grain {
   position: fixed;
